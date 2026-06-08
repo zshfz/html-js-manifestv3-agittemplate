@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "아지트 템플릿 마스터",
+  "version": "1.0",
+  "description": "아지트 글 템플릿 생성",
+  "permissions": ["activeTab", "scripting", "sidePanel"],
+  "host_permissions": ["<all_urls>"],
+  "side_panel": {
+    "default_path": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
