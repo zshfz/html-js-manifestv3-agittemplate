@@ -25,26 +25,26 @@
 * `scripting` & `activeTab API`: 현재 열려 있는 탭(자산 관리 시스템 페이지)의 DOM에 접근하여 선택된 자산의 품명 및 코드를 스크래핑하는 웹 훅 역할 수행
 
 
-## 6. 주요 기능
+## 5. 주요 기능
 | 자산 스크래핑 기능                                                      |
 |--------------------------------------------------------------|
-| ![Image](https://github.com/user-attachments/assets/167ac450-8aa1-438c-8e30-28cccbd4e7eb) |
+| ![Image](https://github.com/user-attachments/assets/62df2fb7-ee63-408d-83f7-e31d476d4fcd) |
 - 현재 활성화된 탭의 테이블 데이터를 읽어와 체크박스가 선택된 자산의 이름과 자산 코드를 클립보드로 자동 추출
 - 자산명 / 자산코드 형식으로 클립보드에 복사
 
 | 자산 상태별 스마트 꼬리표 자동화                                                      |
 |--------------------------------------------------------------|
-| ![Image](https://github.com/user-attachments/assets/ae28172c-0182-436b-a98a-9f2f99379f57) |
+| ![Image](https://github.com/user-attachments/assets/cbe3a7d0-d836-4c6d-97d2-22fd15363053) |
 - 자산의 종류(노트북, 모니터, 휴대폰)와 처리 상태(지급, 반납예정, 반납완료 등)를 인식하여 부속품 및 네트워크 처리 상태를 자동 삽입
 - 예: 노트북 반납예정 -> (충전기 포함, MAC삭제 예정), 모니터 -> (전원선 포함, 연결선 포함), 휴대폰 대여완료 -> (MAC등록 완료) 등 자동 매핑
 
 | 맞춤 서식 랜더링                                                |
 |--------------------------------------------------------------|
-| ![Image](https://github.com/user-attachments/assets/d80e9d99-c2d7-4911-936c-f07e04ed8971) |
-- 체크 박스 체크만으로 상황에 맞는 템플릿 생성 및 담당자 멘션 설정 가능 
+| ![Image](https://github.com/user-attachments/assets/eb56cd6d-5eca-4b80-a940-f7f058e48b80) |
+- 체크 박스 체크만으로 상황에 맞는 템플릿 생성
   
 | 아지트 완벽 호환 클립보드 복사                                                   |
 |--------------------------------------------------------------|
-| ![Image](https://github.com/user-attachments/assets/62ae95eb-d23b-4d04-a81a-9ff153fea2e5) |
+| ![Image](https://github.com/user-attachments/assets/3fd5c2c8-9acb-4e12-a57d-e2834c5bb760) |
 - 아지트 고유의 DOM 구조(marked react-afm)와 인용구, 링크 서식을 HTML Blob 객체로 캡슐화하여, 붙여넣기 시 텍스트 깨짐 없이 즉각적인 포스팅이 가능토록 지원
 
