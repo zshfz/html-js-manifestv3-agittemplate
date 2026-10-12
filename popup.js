@@ -2,7 +2,7 @@ const MSGS = {
   office:
     "오피스 라이선스 지급 드렸습니다. <a href='https://www.office.com/' target='_blank'>https://www.office.com/</a> 에서 오피스 다운로드 후 본인계정@kakaomobility.com 계정으로 로그인 하신뒤 OKTA 인증 후 사용 바랍니다.",
   hangul:
-    "구글드라이브 재공유 드렸습니다. pkg 파일 설치 후 폴더에 있는 시리얼 넘버 입력하시고 사용하시면 됩니다.",
+    "구글드라이브 공유 드렸습니다. pkg 파일 설치 후 폴더에 있는 시리얼 넘버 입력하시고 사용하시면 됩니다.",
   retireFooter:
     "@jay.jjj\ncc @beom.bb @kate.j2\n금일 퇴근 전 출입 권한 회수 부탁드립니다:)",
   surveyHtml: `<blockquote><div class="marked__paragraph">PC 교체자의 경우, 반납한 PC를 크루분들이 자택에서 개인용도로 사용 할 목적으로 구입을 원하는 경우에 한하여 판매하고있습니다.<br>단가 확인 후 구매 의사가 있으실경우 <strong>1주일 이내로</strong> 설문지 작성 부탁 드립니다.</div><div class="marked__paragraph marked__paragraph--empty"><br></div><div class="marked__paragraph">- 구매 설문지 작성 : <a href="https://docs.google.com/forms/d/1U_Cswe_6g9nEei0KwCbYqHbRn55Dfk4UW-Avpe8bPxA/edit" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">바로가기</a></div><div class="marked__paragraph">- 판매 단가표 : <a href="https://docs.google.com/spreadsheets/d/1TdcPoPu6qa4Xp4akkwJ27ATd-DaK8EndiK5OBOjflwc/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">바로가기</a></div><div class="marked__paragraph">&nbsp;&nbsp;&nbsp;<strong>ㄴ반납 예정에 적혀있는 PC의 모델명을 확인 후 단가표를 확인해주세요.</strong></div></blockquote>`,
@@ -68,6 +68,8 @@ function resetAll() {
     "useLeave",
     "useRetireO",
     "useRetireX",
+    "useMacReg", // 새로 추가
+    "useGive"    // 새로 추가
   ];
   toggles.forEach((id) => {
     const el = document.getElementById(id);
@@ -225,11 +227,11 @@ function appendDeviceSuffixes(text, status) {
     .split("\n")
     .map((line) => {
       let pLine = line.trim();
-      if (pLine.includes("노트북") && !pLine.includes("충전기 포함"))
+      // '스텐드'나 '스탠드'라는 단어가 없을 때만 꼬리표 부착
+      if (pLine.includes("노트북") && !pLine.includes("스텐드") && !pLine.includes("스탠드") && !pLine.includes("충전기 포함"))
         pLine += laptopSuffix;
       if (pLine.includes("모니터") && !pLine.includes("전원선 포함"))
         pLine += " (전원선 포함, 연결선 포함)";
-      // 휴대폰 로직 추가 (이미 MAC 글자가 있으면 중복 추가 방지)
       if (pLine.includes("휴대폰") && !pLine.includes("MAC"))
         pLine += phoneSuffix;
       return pLine;
@@ -262,6 +264,14 @@ function generateText() {
     htmlLines.push(makeP(MSGS.office));
   if (document.getElementById("useHangul").checked)
     htmlLines.push(makeP(MSGS.hangul));
+
+  // 새로 추가된 기능: 맥등록, 지급
+  if (document.getElementById("useMacReg").checked) {
+    pushMultiLine(htmlLines, "이미 등록된 맥주소 입니다.\n본문에 설정 방법 참고하셔서 다시 연결해보시고\n그래도 안되시면 8층 서비스데스크 방문 바랍니다.");
+  }
+  if (document.getElementById("useGive").checked) {
+    pushMultiLine(htmlLines, "8층 서비스데스크에서 수령 바랍니다.");
+  }
 
   const giveInfo = appendDeviceSuffixes(
     document.getElementById("giveInfo").value,
