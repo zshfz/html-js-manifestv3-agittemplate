@@ -258,6 +258,13 @@
               >📦 지급</span
             ></label
           >
+          <label
+            class="bg-red-50 p-3 rounded-xl border border-red-200 flex items-center gap-2 cursor-pointer"
+            ><input type="checkbox" id="useOutOfStock" class="w-4 h-4" /><span
+              class="text-red-900 font-bold"
+              >📦 재고 없음</span
+            ></label
+          >
         </div>
 
         <div id="dynamicInputs" class="space-y-2">
@@ -276,6 +283,14 @@
               placeholder="회수 소프트웨어 정보"
               class="w-full p-3 border-2 border-purple-200 rounded-xl outline-none text-xs"
             ></textarea>
+          </div>
+          <div id="outOfStockInput" class="hidden animate-fade-in">
+            <input
+              type="text"
+              id="outOfStockItem"
+              placeholder="재고가 없는 품목 입력 (예: 무선 마우스)"
+              class="w-full p-3 border-2 border-red-200 rounded-xl outline-none text-xs"
+            />
           </div>
         </div>
 

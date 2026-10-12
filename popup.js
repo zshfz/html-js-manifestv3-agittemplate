@@ -48,6 +48,7 @@ function resetAll() {
   document.getElementById("rentInfo").value = "";
   document.getElementById("receiverId").value = "";
   document.getElementById("swInfo").value = "";
+  document.getElementById("outOfStockItem").value = "";
 
   document.getElementById("giveStatus").value = "지급완료";
   document.getElementById("returnStatus").value = "반납완료";
@@ -69,7 +70,8 @@ function resetAll() {
     "useRetireO",
     "useRetireX",
     "useMacReg", // 새로 추가
-    "useGive"    // 새로 추가
+    "useGive" ,
+    "useOutOfStock"    // 새로 추가
   ];
   toggles.forEach((id) => {
     const el = document.getElementById(id);
@@ -175,6 +177,9 @@ function syncLogic(changedId) {
   document
     .getElementById("swInput")
     .classList.toggle("hidden", !document.getElementById("useSW").checked);
+  document
+    .getElementById("outOfStockInput")
+    .classList.toggle("hidden", !document.getElementById("useOutOfStock").checked);  
 }
 
 function escapeHtml(text) {
@@ -271,6 +276,12 @@ function generateText() {
   }
   if (document.getElementById("useGive").checked) {
     pushMultiLine(htmlLines, "8층 서비스데스크에서 수령 바랍니다.");
+  }
+
+  // 새로 추가된 기능: 재고 없음
+  if (document.getElementById("useOutOfStock").checked) {
+    const item = document.getElementById("outOfStockItem").value.trim() || "(빈칸)";
+    pushMultiLine(htmlLines, `현재 ${item} 재고가 없습니다.\n입고 시 안내 드리겠습니다.`);
   }
 
   const giveInfo = appendDeviceSuffixes(
