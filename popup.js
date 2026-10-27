@@ -239,6 +239,9 @@ function appendDeviceSuffixes(text, status) {
         pLine += " (전원선 포함, 연결선 포함)";
       if (pLine.includes("휴대폰") && !pLine.includes("MAC"))
         pLine += phoneSuffix;
+      if ((pLine.includes("ERGO K860") || pLine.includes("MK270R")) && !pLine.includes("동글")) {
+        pLine += " (동글 포함)";
+      }
       return pLine;
     })
     .join("\n");
