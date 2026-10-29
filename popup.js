@@ -50,9 +50,9 @@ function resetAll() {
   document.getElementById("swInfo").value = "";
   document.getElementById("outOfStockItem").value = "";
 
-  document.getElementById("giveStatus").value = "지급완료";
-  document.getElementById("returnStatus").value = "반납완료";
-  document.getElementById("rentStatus").value = "대여완료";
+  document.getElementById("giveStatus").value = "지급예정";
+  document.getElementById("returnStatus").value = "반납예정";
+  document.getElementById("rentStatus").value = "대여예정";
 
   const defaultCC = ["@dino.mater", "@click.me", "@jay.jjj", "@roy.00"];
   document.querySelectorAll('input[name="cc"]').forEach((cb) => {
@@ -71,6 +71,7 @@ function resetAll() {
     "useRetireX",
     "useMacReg", // 새로 추가
     "useGive" ,
+    "useReturn" ,
     "useOutOfStock"    // 새로 추가
   ];
   toggles.forEach((id) => {
@@ -275,10 +276,14 @@ function generateText() {
 
   // 새로 추가된 기능: 맥등록, 지급
   if (document.getElementById("useMacReg").checked) {
-    pushMultiLine(htmlLines, "이미 등록된 맥주소 입니다.\n본문에 설정 방법 참고하셔서 다시 연결해보시고\n그래도 안되시면 8층 서비스데스크 방문 바랍니다.");
+    pushMultiLine(htmlLines, "등록 완료됐습니다.");
   }
   if (document.getElementById("useGive").checked) {
     pushMultiLine(htmlLines, "8층 서비스데스크에서 수령 바랍니다.");
+  }
+  
+  if (document.getElementById("useReturn").checked) {
+    pushMultiLine(htmlLines, "8층 서비스데스크로 반납 바랍니다.");
   }
 
   // 새로 추가된 기능: 재고 없음

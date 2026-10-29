@@ -259,6 +259,13 @@
             ></label
           >
           <label
+            class="bg-orange-50 p-3 rounded-xl border border-orange-200 flex items-center gap-2 cursor-pointer"
+            ><input type="checkbox" id="useReturn" class="w-4 h-4" /><span
+              class="text-orange-900 font-bold"
+              >🔙 반납</span
+            ></label
+          >
+          <label
             class="bg-red-50 p-3 rounded-xl border border-red-200 flex items-center gap-2 cursor-pointer"
             ><input type="checkbox" id="useOutOfStock" class="w-4 h-4" /><span
               class="text-red-900 font-bold"
@@ -304,8 +311,8 @@
               id="giveStatus"
               class="w-full text-xs font-bold bg-white border rounded mb-2 outline-none p-1"
             >
-              <option value="지급완료">지급완료</option>
               <option value="지급예정">지급예정</option>
+              <option value="지급완료">지급완료</option>
             </select>
             <textarea
               id="giveInfo"
@@ -321,10 +328,11 @@
               id="returnStatus"
               class="w-full text-xs font-bold bg-white border rounded mb-2 outline-none p-1"
             >
+              <option value="반납예정">반납예정</option>
               <option value="반납완료">반납완료</option>
               <option value="반납완료 & 매각대기">반납완료 & 매각대기</option>
               <option value="반납완료 & 폐기">반납완료 & 폐기</option>
-              <option value="반납예정">반납예정</option>
+              
             </select>
             <textarea
               id="returnInfo"
@@ -340,8 +348,8 @@
               id="rentStatus"
               class="w-full text-xs font-bold bg-white border rounded mb-2 outline-none p-1"
             >
-              <option value="대여완료">대여완료</option>
               <option value="대여예정">대여예정</option>
+              <option value="대여완료">대여완료</option>
             </select>
             <textarea
               id="rentInfo"
